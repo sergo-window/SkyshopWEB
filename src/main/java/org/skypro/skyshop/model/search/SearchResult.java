@@ -9,13 +9,13 @@ public final class SearchResult {
     private final String searchableObjectType;
 
     public SearchResult(String id, String searchableObjectName, String searchableObjectType) {
-        this.id = Objects.requireNonNull(id, "ID cannot be null");
-        this.searchableObjectName = Objects.requireNonNull(searchableObjectName, "Name cannot be null");
-        this.searchableObjectType = Objects.requireNonNull(searchableObjectType, "Type cannot be null");
+        this.id = Objects.requireNonNull(id, "ID не может быть null");
+        this.searchableObjectName = Objects.requireNonNull(searchableObjectName, "Название не может быть null");
+        this.searchableObjectType = Objects.requireNonNull(searchableObjectType, "Тип не может быть null");
     }
 
     public static SearchResult fromSearchable(Searchable searchable) {
-        Objects.requireNonNull(searchable, "Searchable cannot be null");
+        Objects.requireNonNull(searchable, "Запрос не может быть null");
         return new SearchResult(
                 searchable.getId().toString(),
                 searchable.getSearchableObjectName(),

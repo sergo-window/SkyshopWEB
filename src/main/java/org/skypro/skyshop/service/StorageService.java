@@ -30,12 +30,21 @@ public class StorageService {
     }
 
     private void createTestData() {
-        products.put(new SimpleProduct("Молоко", 80).getId(), new SimpleProduct("Молоко", 80));
-        products.put(new DiscountedProduct("Хлеб", 50, 10).getId(), new DiscountedProduct("Хлеб", 50, 10));
-        products.put(new FixPriceProduct("Кофе").getId(), new FixPriceProduct("Кофе"));
+        Product product = new SimpleProduct("Молоко", 80);
+        products.put(product.getId(), product);
+        Product product1 = new DiscountedProduct("Хлеб", 50, 10);
+        products.put(product1.getId(), product1);
+        Product product2 = new FixPriceProduct("Кофе");
+        products.put(product2.getId(), product2);
+        Product product3 = new DiscountedProduct("Коньяк", 750, 20);
+        products.put(product3.getId(), product3);
+        Product product4 = new SimpleProduct("Мясо", 400);
+        products.put(product4.getId(), product4);
 
-        articles.put(new Article("Польза молока", "Молоко содержит кальций...").getId(),
-                new Article("Польза молока", "Молоко содержит кальций..."));
+        Article article = new Article("Польза молока", "Молоко содержит кальций...");
+        articles.put(article.getId(), article);
+        Article article1 = new Article("Как выбрать чай", "Чай бывает разных сортов (черный, зеленый, красный...");
+        articles.put(article1.getId(), article1);
     }
 
     public Collection<Searchable> getAllSearchables() {
@@ -43,5 +52,9 @@ public class StorageService {
         result.addAll(getProducts());
         result.addAll(getArticles());
         return result;
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
     }
 }
