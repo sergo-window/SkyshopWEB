@@ -17,7 +17,7 @@ public class SearchService {
 
     public Collection<SearchResult> search(String query) {
         if (query == null || query.trim().isEmpty()) {
-            throw new IllegalArgumentException("Search query cannot be empty");
+            throw new IllegalArgumentException("Поисковый запрос не может быть пустым");
         }
 
         String lowerQuery = query.toLowerCase();
