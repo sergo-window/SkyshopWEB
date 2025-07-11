@@ -1,6 +1,7 @@
 package org.skypro.skyshop.model.basket;
 
 
+import org.skypro.skyshop.exceptions.NoSuchProductException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -18,7 +19,7 @@ public class ProductBasket {
 
     public void addProduct(UUID productId) {
         if (productId == null) {
-            throw new IllegalArgumentException("Продукт не может быть null");
+            throw new NoSuchProductException("Продукт не может быть null");
         }
         productsMap.merge(productId, 1, Integer::sum);
     }

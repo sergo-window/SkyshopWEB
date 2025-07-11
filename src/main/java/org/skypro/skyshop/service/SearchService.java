@@ -1,5 +1,6 @@
 package org.skypro.skyshop.service;
 
+import org.skypro.skyshop.exceptions.NoSuchProductException;
 import org.skypro.skyshop.model.search.SearchResult;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,7 @@ public class SearchService {
 
     public Collection<SearchResult> search(String query) {
         if (query == null || query.trim().isEmpty()) {
-            throw new IllegalArgumentException("Поисковый запрос не может быть пустым");
+            throw new NoSuchProductException("Поисковый запрос не может быть пустым");
         }
 
         String lowerQuery = query.toLowerCase();
