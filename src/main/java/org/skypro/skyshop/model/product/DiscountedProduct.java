@@ -1,6 +1,8 @@
 package org.skypro.skyshop.model.product;
 
 
+import org.skypro.skyshop.exceptions.NoSuchProductException;
+
 public class DiscountedProduct extends Product {
     private final int baseCost;
     private final int discountPercent;
@@ -8,10 +10,10 @@ public class DiscountedProduct extends Product {
     public DiscountedProduct(String productName, int baseCost, int discountPercent) {
         super(productName);
         if (baseCost <= 0) {
-            throw new IllegalArgumentException("\nОШИБКА! (некорректная базовая цена продукта)");
+            throw new NoSuchProductException("\nОШИБКА! (некорректная базовая цена продукта)");
         }
         if (discountPercent < 0 || discountPercent > 100) {
-            throw new IllegalArgumentException("\nОШИБКА! (некорректный процент скидки на продукт)");
+            throw new NoSuchProductException("\nОШИБКА! (некорректный процент скидки на продукт)");
         }
         this.baseCost = baseCost;
         this.discountPercent = discountPercent;

@@ -1,13 +1,15 @@
 package org.skypro.skyshop.model.product;
 
 
+import org.skypro.skyshop.exceptions.NoSuchProductException;
+
 public class SimpleProduct extends Product {
     private final int productCost;
 
     public SimpleProduct(String productName, int productCost) {
         super(productName);
         if (productCost <= 0) {
-            throw new IllegalArgumentException("\nОШИБКА! (некорректная цена продукта)");
+            throw new NoSuchProductException("\nОШИБКА! (некорректная цена продукта)");
         }
         this.productCost = productCost;
     }

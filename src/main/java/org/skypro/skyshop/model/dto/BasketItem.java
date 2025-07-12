@@ -1,5 +1,6 @@
 package org.skypro.skyshop.model.dto;
 
+import org.skypro.skyshop.exceptions.NoSuchProductException;
 import org.skypro.skyshop.model.product.Product;
 
 import java.util.Objects;
@@ -11,7 +12,7 @@ public class BasketItem {
     public BasketItem(Product product, int quantity) {
         this.product = Objects.requireNonNull(product, "Продукт не может быть null");
         if (quantity <= 0) {
-            throw new IllegalArgumentException("Количество должно быть положительным");
+            throw new NoSuchProductException("Количество должно быть положительным");
         }
         this.quantity = quantity;
     }
